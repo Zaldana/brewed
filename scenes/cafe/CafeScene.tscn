@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=3 uid="uid://de5opw31r027w"]
+
+[ext_resource type="Script" path="res://scripts/managers/CafeManager.gd" id="1_2cde3"]
+
+[sub_resource type="Environment" id="Environment_1"]
+background_mode = 1
+background_color = Color(0.9, 0.8, 0.7, 1)
+
+[node name="CafeScene" type="Node2D"]
+script = ExtResource("1_2cde3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+
+[node name="CafeEquipment" type="Node2D" parent="."]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Background" type="ColorRect" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.8, 0.7, 0.6, 1)
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TopPanel" type="Panel" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="CafeTitle" type="Label" parent="UI/HUD/TopPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -80.0
+offset_top = -15.0
+offset_right = 80.0
+offset_bottom = 15.0
+text = "Coffee Café"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DayLabel" type="Label" parent="UI/HUD/TopPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -15.0
+offset_right = -20.0
+offset_bottom = 15.0
+text = "Day 1"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="ReputationLabel" type="Label" parent="UI/HUD/TopPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = 10.0
+offset_right = -20.0
+offset_bottom = 40.0
+text = "Reputation: ★★★★☆"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="BottomPanel" type="Panel" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="InventoryLabel" type="Label" parent="UI/HUD/BottomPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -200.0
+offset_top = 10.0
+offset_right = 200.0
+offset_bottom = 30.0
+text = "Roasted Beans: 0 lbs | Customers: 0"
+horizontal_alignment = 1
+
+[node name="EmployeeLabel" type="Label" parent="UI/HUD/BottomPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 30.0
+offset_right = 200.0
+offset_bottom = 50.0
+text = "Employees: 0/0"
+horizontal_alignment = 1
+
+[node name="ActionButtons" type="HBoxContainer" parent="UI/HUD/BottomPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 50.0
+offset_right = 400.0
+offset_bottom = 90.0
+alignment = 1
+
+[node name="ServeButton" type="Button" parent="UI/HUD/BottomPanel/ActionButtons"]
+layout_mode = 2
+text = "Serve Customer"
+
+[node name="GrindButton" type="Button" parent="UI/HUD/BottomPanel/ActionButtons"]
+layout_mode = 2
+text = "Grind Beans"
+
+[node name="CleanButton" type="Button" parent="UI/HUD/BottomPanel/ActionButtons"]
+layout_mode = 2
+text = "Clean Café"
+
+[node name="HireButton" type="Button" parent="UI/HUD/BottomPanel/ActionButtons"]
+layout_mode = 2
+text = "Hire Employee"

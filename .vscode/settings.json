@@ -1,0 +1,6 @@
+{
+    "godotTools.editorPath.godot4": "/Applications/Godot.app",
+    "godotTools.lsp.serverPort": 6008,
+    "godotTools.lsp.serverHost": "127.0.0.1",
+    "godotTools.lsp.serverProtocol": "tcp"
+}
