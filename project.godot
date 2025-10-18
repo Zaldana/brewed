@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Brewed Together"
-run/main_scene="res://scenes/MainScene.tscn"
+run/main_scene="res://scenes/LauncherScene.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

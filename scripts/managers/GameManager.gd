@@ -10,9 +10,7 @@ signal game_loaded
 
 enum GamePhase {
 	MORNING_SELECTION,
-	DAY_PLAY,
-	EVENING_REVIEW,
-	NIGHT_REST
+	DAY_PLAY
 }
 
 enum Season {
@@ -26,7 +24,9 @@ var current_day: int = 1
 var current_season: Season = Season.SPRING
 var current_phase: GamePhase = GamePhase.MORNING_SELECTION
 var selected_sibling: String = ""
+var initial_character: String = ""  # The character selected at game start
 var game_started: bool = false
+var character_selected: bool = false  # Whether initial character has been chosen
 
 # Calendar system
 var days_per_season: int = 28
@@ -48,6 +48,12 @@ func _initialize_game():
 		game_started = true
 		_change_phase(GamePhase.MORNING_SELECTION)
 		print("Game initialized - Day 1, Spring")
+
+func set_initial_character(character: String):
+	"""Set the initial character selected at game start"""
+	initial_character = character
+	character_selected = true
+	print("Initial character set to: ", character)
 
 func start_new_day():
 	"""Begin a new day cycle"""
@@ -78,15 +84,13 @@ func select_sibling(sibling: String):
 	sibling_selected.emit(sibling)
 	print("Selected sibling: ", sibling)
 
-func end_day_phase():
-	"""End the current day phase and advance"""
-	match current_phase:
-		GamePhase.DAY_PLAY:
-			_change_phase(GamePhase.EVENING_REVIEW)
-		GamePhase.EVENING_REVIEW:
-			_change_phase(GamePhase.NIGHT_REST)
-		GamePhase.NIGHT_REST:
-			start_new_day()
+func end_current_day():
+	"""End the current day and advance to next day"""
+	if current_phase == GamePhase.DAY_PLAY:
+		_process_end_of_day()
+		start_new_day()
+	else:
+		print("Can only end day during DAY_PLAY phase")
 
 func _change_phase(new_phase: GamePhase):
 	"""Internal function to change game phase"""
@@ -95,20 +99,17 @@ func _change_phase(new_phase: GamePhase):
 	
 	# Handle phase-specific logic
 	match new_phase:
-		GamePhase.EVENING_REVIEW:
-			_process_autonomous_operations()
-		GamePhase.NIGHT_REST:
-			_process_daily_updates()
+		GamePhase.MORNING_SELECTION:
+			print("Ready to select sibling for the day")
+		GamePhase.DAY_PLAY:
+			print("Day started - playing as ", selected_sibling)
 
-func _process_autonomous_operations():
-	"""Process what happens in the other two businesses while player plays one"""
-	print("Processing autonomous operations for other siblings...")
-	# This will be implemented when we have the business managers
-
-func _process_daily_updates():
-	"""Process end-of-day updates like employee mood changes"""
-	print("Processing daily updates...")
-	# This will be implemented with employee system
+func _process_end_of_day():
+	"""Process end of day operations for all businesses"""
+	print("Processing end of day operations...")
+	# Update employees for all businesses
+	# Process autonomous operations for non-selected siblings
+	# Apply any end-of-day effects
 
 func _advance_season():
 	"""Advance to the next season"""
@@ -122,10 +123,12 @@ func save_game():
 	var save_data = {
 		"current_day": current_day,
 		"current_season": current_season,
-		"current_phase": current_phase,
-		"selected_sibling": selected_sibling,
-		"total_days_played": total_days_played,
-		"game_started": game_started
+	"current_phase": current_phase,
+	"selected_sibling": selected_sibling,
+	"initial_character": initial_character,
+	"character_selected": character_selected,
+	"total_days_played": total_days_played,
+	"game_started": game_started
 	}
 	
 	var file = FileAccess.open(SAVE_FILE, FileAccess.WRITE)
@@ -159,6 +162,8 @@ func load_game():
 			current_season = save_data.get("current_season", Season.SPRING)
 			current_phase = save_data.get("current_phase", GamePhase.MORNING_SELECTION)
 			selected_sibling = save_data.get("selected_sibling", "")
+			initial_character = save_data.get("initial_character", "")
+			character_selected = save_data.get("character_selected", false)
 			total_days_played = save_data.get("total_days_played", 0)
 			game_started = save_data.get("game_started", true)
 			
@@ -186,8 +191,6 @@ func _phase_to_string(phase: GamePhase) -> String:
 	match phase:
 		GamePhase.MORNING_SELECTION: return "Morning Selection"
 		GamePhase.DAY_PLAY: return "Day Play"
-		GamePhase.EVENING_REVIEW: return "Evening Review"
-		GamePhase.NIGHT_REST: return "Night Rest"
 		_: return "Unknown"
 
 # Getters for other systems
@@ -208,3 +211,13 @@ func is_morning_selection() -> bool:
 
 func is_day_play() -> bool:
 	return current_phase == GamePhase.DAY_PLAY
+
+func request_end_day():
+	"""Public function for UI to request ending the current day"""
+	end_current_day()
+
+func get_initial_character() -> String:
+	return initial_character
+
+func is_character_selected() -> bool:
+	return character_selected

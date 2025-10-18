@@ -1,0 +1,291 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgj7lfvfyjata"]
+
+[ext_resource type="Script" path="res://scripts/ui/CharacterSelectionScreen.gd" id="1_0abc1"]
+
+[node name="CharacterSelectionScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_0abc1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.15, 0.12, 0.08, 1)
+
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+expand_mode = 1
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -350.0
+offset_right = 500.0
+offset_bottom = 350.0
+alignment = 1
+
+[node name="TitleContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Title" type="Label" parent="VBoxContainer/TitleContainer"]
+layout_mode = 2
+text = "Choose Your Character"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 48
+
+[node name="Subtitle" type="Label" parent="VBoxContainer/TitleContainer"]
+layout_mode = 2
+text = "Which sibling will you start as?"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_color = Color(0.8, 0.7, 0.6, 1)
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="AlexCard" type="Panel" parent="VBoxContainer/CharacterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = null
+
+[node name="AlexButton" type="Button" parent="VBoxContainer/CharacterContainer/AlexCard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+
+[node name="AlexContent" type="VBoxContainer" parent="VBoxContainer/CharacterContainer/AlexCard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="AlexPortrait" type="ColorRect" parent="VBoxContainer/CharacterContainer/AlexCard/AlexContent"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 200)
+color = Color(0.4, 0.7, 0.4, 1)
+
+[node name="AlexPortraitLabel" type="Label" parent="VBoxContainer/CharacterContainer/AlexCard/AlexContent/AlexPortrait"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -12.0
+offset_right = 50.0
+offset_bottom = 12.0
+text = "Alex"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
+
+[node name="AlexName" type="Label" parent="VBoxContainer/CharacterContainer/AlexCard/AlexContent"]
+layout_mode = 2
+text = "Alex - The Farmer"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.4, 0.7, 0.4, 1)
+
+[node name="AlexDescription" type="Label" parent="VBoxContainer/CharacterContainer/AlexCard/AlexContent"]
+layout_mode = 2
+text = "Passionate about sustainable farming and growing the perfect coffee beans. Alex knows the land and understands how weather, soil, and care affect the final cup."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 14
+
+[node name="AlexTraits" type="Label" parent="VBoxContainer/CharacterContainer/AlexCard/AlexContent"]
+layout_mode = 2
+text = "• Expert in crop management
+• Weather-wise
+• Patient and methodical
+• Connects with the land"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.7, 0.8, 0.7, 1)
+
+[node name="JordanCard" type="Panel" parent="VBoxContainer/CharacterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JordanButton" type="Button" parent="VBoxContainer/CharacterContainer/JordanCard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+
+[node name="JordanContent" type="VBoxContainer" parent="VBoxContainer/CharacterContainer/JordanCard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="JordanPortrait" type="ColorRect" parent="VBoxContainer/CharacterContainer/JordanCard/JordanContent"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 200)
+color = Color(0.8, 0.6, 0.4, 1)
+
+[node name="JordanPortraitLabel" type="Label" parent="VBoxContainer/CharacterContainer/JordanCard/JordanContent/JordanPortrait"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -12.0
+offset_right = 50.0
+offset_bottom = 12.0
+text = "Jordan"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
+
+[node name="JordanName" type="Label" parent="VBoxContainer/CharacterContainer/JordanCard/JordanContent"]
+layout_mode = 2
+text = "Jordan - The Roaster"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.8, 0.6, 0.4, 1)
+
+[node name="JordanDescription" type="Label" parent="VBoxContainer/CharacterContainer/JordanCard/JordanContent"]
+layout_mode = 2
+text = "An artist with coffee roasting, Jordan understands how heat, time, and technique transform green beans into aromatic perfection. Every roast is a masterpiece."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 14
+
+[node name="JordanTraits" type="Label" parent="VBoxContainer/CharacterContainer/JordanCard/JordanContent"]
+layout_mode = 2
+text = "• Master of roasting profiles
+• Quality control expert
+• Creative with blends
+• Precision-focused"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.8, 0.7, 0.6, 1)
+
+[node name="CaseyCard" type="Panel" parent="VBoxContainer/CharacterContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CaseyButton" type="Button" parent="VBoxContainer/CharacterContainer/CaseyCard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+
+[node name="CaseyContent" type="VBoxContainer" parent="VBoxContainer/CharacterContainer/CaseyCard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+
+[node name="CaseyPortrait" type="ColorRect" parent="VBoxContainer/CharacterContainer/CaseyCard/CaseyContent"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 200)
+color = Color(0.9, 0.8, 0.7, 1)
+
+[node name="CaseyPortraitLabel" type="Label" parent="VBoxContainer/CharacterContainer/CaseyCard/CaseyContent/CaseyPortrait"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -12.0
+offset_right = 50.0
+offset_bottom = 12.0
+text = "Casey"
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 24
+
+[node name="CaseyName" type="Label" parent="VBoxContainer/CharacterContainer/CaseyCard/CaseyContent"]
+layout_mode = 2
+text = "Casey - The Café Owner"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.9, 0.7, 0.5, 1)
+
+[node name="CaseyDescription" type="Label" parent="VBoxContainer/CharacterContainer/CaseyCard/CaseyContent"]
+layout_mode = 2
+text = "The heart of customer service, Casey creates the perfect café atmosphere where every cup tells a story and every customer feels at home."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 14
+
+[node name="CaseyTraits" type="Label" parent="VBoxContainer/CharacterContainer/CaseyCard/CaseyContent"]
+layout_mode = 2
+text = "• Customer relationship expert
+• Barista skills
+• Ambiance creator
+• People person"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.8, 0.7, 0.6, 1)
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="BottomContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="InstructionLabel" type="Label" parent="VBoxContainer/BottomContainer"]
+layout_mode = 2
+text = "Choose wisely! You can switch between siblings daily, but your starting character will shape your initial approach to the family business."
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(0.9, 0.8, 0.7, 1)
+
+[node name="ButtonContainer" type="HBoxContainer" parent="VBoxContainer/BottomContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="BackButton" type="Button" parent="VBoxContainer/BottomContainer/ButtonContainer"]
+layout_mode = 2
+text = "Back to Menu"
+theme_override_font_sizes/font_size = 18

@@ -38,6 +38,7 @@ var roasting_duration: float = 0.0
 @onready var qc_button: Button = $UI/HUD/BottomPanel/ActionButtons/QCButton
 @onready var blend_button: Button = $UI/HUD/BottomPanel/ActionButtons/BlendButton
 @onready var hire_button: Button = $UI/HUD/BottomPanel/ActionButtons/HireButton
+@onready var end_day_button: Button = $UI/HUD/BottomPanel/ActionButtons/EndDayButton
 @onready var inventory_label: Label = $UI/HUD/BottomPanel/InventoryLabel
 @onready var employee_label: Label = $UI/HUD/BottomPanel/EmployeeLabel
 @onready var day_label: Label = $UI/HUD/TopPanel/DayLabel
@@ -118,6 +119,7 @@ func _setup_ui_connections():
 	qc_button.pressed.connect(_on_qc_button_pressed)
 	blend_button.pressed.connect(_on_blend_button_pressed)
 	hire_button.pressed.connect(_on_hire_button_pressed)
+	end_day_button.pressed.connect(_on_end_day_button_pressed)
 
 func _connect_to_managers():
 	"""Connect to global managers"""
@@ -373,6 +375,12 @@ func _on_hire_button_pressed():
 	"""Player hires a new employee"""
 	if GameManager.is_day_play() and GameManager.get_selected_sibling() == "roaster":
 		_hire_employee()
+
+func _on_end_day_button_pressed():
+	"""Player ends the current day"""
+	if GameManager.is_day_play() and GameManager.get_selected_sibling() == "roaster":
+		print("Player ended the day from roastery")
+		GameManager.request_end_day()
 
 func _manual_roast():
 	"""Manual roasting by player"""

@@ -170,8 +170,6 @@ func _get_phase_name(phase: GameManager.GamePhase) -> String:
 	match phase:
 		GameManager.GamePhase.MORNING_SELECTION: return "Morning Selection"
 		GameManager.GamePhase.DAY_PLAY: return "Day Play"
-		GameManager.GamePhase.EVENING_REVIEW: return "Evening Review"
-		GameManager.GamePhase.NIGHT_REST: return "Night Rest"
 		_: return "Unknown"
 
 # Public functions for external access
@@ -183,5 +181,5 @@ func is_game_started() -> bool:
 
 func end_current_day():
 	"""End the current day and advance to next day"""
-	GameManager.end_day_phase()
+	GameManager.request_end_day()
 	day_completed.emit()

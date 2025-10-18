@@ -137,3 +137,8 @@ text = "Process Beans"
 [node name="HireButton" type="Button" parent="UI/HUD/BottomPanel/ActionButtons"]
 layout_mode = 2
 text = "Hire Employee"
+
+[node name="EndDayButton" type="Button" parent="UI/HUD/BottomPanel/ActionButtons"]
+layout_mode = 2
+text = "End Day"
+theme_override_colors/font_color = Color(1, 0.8, 0.4, 1)

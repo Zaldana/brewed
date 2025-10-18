@@ -43,6 +43,7 @@ var drink_recipes: Dictionary = {}
 @onready var grind_button: Button = $UI/HUD/BottomPanel/ActionButtons/GrindButton
 @onready var clean_button: Button = $UI/HUD/BottomPanel/ActionButtons/CleanButton
 @onready var hire_button: Button = $UI/HUD/BottomPanel/ActionButtons/HireButton
+@onready var end_day_button: Button = $UI/HUD/BottomPanel/ActionButtons/EndDayButton
 @onready var inventory_label: Label = $UI/HUD/BottomPanel/InventoryLabel
 @onready var employee_label: Label = $UI/HUD/BottomPanel/EmployeeLabel
 @onready var day_label: Label = $UI/HUD/TopPanel/DayLabel
@@ -137,6 +138,7 @@ func _setup_ui_connections():
 	grind_button.pressed.connect(_on_grind_button_pressed)
 	clean_button.pressed.connect(_on_clean_button_pressed)
 	hire_button.pressed.connect(_on_hire_button_pressed)
+	end_day_button.pressed.connect(_on_end_day_button_pressed)
 
 func _connect_to_managers():
 	"""Connect to global managers"""
@@ -428,6 +430,12 @@ func _on_hire_button_pressed():
 	"""Player hires a new employee"""
 	if GameManager.is_day_play() and GameManager.get_selected_sibling() == "cafe_owner":
 		_hire_employee()
+
+func _on_end_day_button_pressed():
+	"""Player ends the current day"""
+	if GameManager.is_day_play() and GameManager.get_selected_sibling() == "cafe_owner":
+		print("Player ended the day from cafe")
+		GameManager.request_end_day()
 
 func _manual_serve_customer():
 	"""Manual customer service by player"""
